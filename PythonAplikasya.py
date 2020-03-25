@@ -101,9 +101,12 @@ class Aplikasya():
 
         return menubutton
     
-    def menubarmenusuyarad(self, menubar, yazi, funct ):
-        menubar.add_command(label=yazi, command=funct)
-
+    def menubarmenusuyarad(self, menubar, menulist, bayrag, yazi, funct ):
+        if bayrag == True:
+            menubar.add_cascade(label=yazi, menu=menulist)  
+        else:
+            menubar.add_command(label=yazi, command=funct)
+    
     def MenuBarYarad(self):
         menubar = tkinter.Menu(self.root)  
 
@@ -111,3 +114,30 @@ class Aplikasya():
 
     def menubaryerllesidr(self, menubar):
         self.root.config(menu=menubar)  
+
+    def menulistyarad(self, menubar ):
+        return tkinter.Menu(menubar, tearoff=0)  
+
+    def menulistelaveet(self, menulist, yazi, funct):
+        menulist.add_command(label=yazi, command=funct)  
+
+    def menulistkonfiqurasyaet(self, menulist):
+        menulist.add_separator()  
+
+    def mesaj(self, yazi):
+        mesaj = tkinter.Message(self.root, text = yazi, padx = 10, pady=200)  
+        mesaj.pack()  
+
+        return mesaj
+    
+    def secilenduymeyarad(self, yazi, deyisen, deyer, secilen):
+        secilenduyme = tkinter.Radiobutton(self.root, text=yazi, variable=deyisen, value=deyer, command=secilen) 
+        secilenduyme.pack()
+
+        return secilenduyme
+    
+    def secilenduymeucundeyisenyarad(self):
+        return tkinter.IntVar()  
+    
+    def secilendeyericagir(self, deyisen):
+        return deyisen.get()
