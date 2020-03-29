@@ -1,7 +1,15 @@
+#Bu Kod Esasen Korona Virusu Melumat Alma Uycun Yazilib
+#Bu Koda Ilk Once https://www.worldometers.info/coronavirus/ Bu Saayta Baglanaraq Bu Sayitan 
+#Melumat Alir Ama Hal Hazirda Alinan Melumatlarda Probelm OLduqu Uycun Xeta Verecey.
+#
+#
+
+
 import requests
 import lxml.html as lh
 import pandas as pd
 
+#Bu Fonksiyon Ilk Cagrilan Fonksiyondur ve Bu fonksiyon Geriye Bir List Dondurur
 def MelumatSayitiDaxilEt():
     Baglanti_Sayti = "https://"+input("Melumat Saytini Daxil Edin : ")
     Oxunan_Seyfe = requests.get(Baglanti_Sayti)
@@ -37,6 +45,7 @@ def MelumatSayitiDaxilEt():
         
     return Stun
 
+#Bu Sinif Den Bir Obje Yaradaraq O Objeyi Olke Hesab Edmey Olar Bu olkenin Melumatlarini ALmaq Uycun
 class Melumat_Oxuyucu():
 
     def __init__(self):
@@ -46,7 +55,8 @@ class Melumat_Oxuyucu():
         self.Xesdeler = []
         self.Olke_Indexi = 0
         self.Xesde_Indexi = 0
-
+    
+    #Burada Olke Al Fonksiyonuna Olke Objesini Baglayirsiniz Ve Listi Daxil Edilirsniz
     def OlkelerAl(self, Stun):
         for olkeler in Stun[0]:
             for SecilenOlkeler in olkeler:
@@ -54,25 +64,29 @@ class Melumat_Oxuyucu():
                     self.Olke_Sayari += 1
                     self.Olkeler.append(SecilenOlkeler)
             
+    #Burda Xesde Al fonksiyonuna Olke Objesini Baglayirsiniz Ve Listi Daxil Edirsiniz 
     def XesdelerAl(self, Stun):
         for xesdeler in Stun[1]:
             for secilenXesdeler in xesdeler:
                 if xesdeler != "TotalCases":
                     self.Xesdeler.append(secilenXesdeler)
-               
+                    
+    #Burd Isdediyiniz Olkeni Daxil Ede Bilersiniz ilk Objeni Baglayin ve Sonra Olkenin Adini Ingilisce Daxil Edirsiniz 
     def SecilenOlke(self, Olke):
         for Secilen_Olke in self.Olkeler:
             self.Olke_Indexi += 1
             if Secilen_Olke == Olke:
                 self.Secilenler.append(Secilen_Olke)
                 break
-    
+                
+    #Ve Birde Bu Fonksiyonu Cagirmaqi Unutmayin
     def SecilenXesdeSayi(self):            
         for Secilen_Xesde_Sayi in self.Xesdeler:
             self.Xesde_Indexi += 1
             if self.Olke_Indexi == self.Xesde_Indexi:
                 self.Secilenler.append(Secilen_Xesde_Sayi)
-                        
+    
+    #En Sonda Iyse Bu Fonksiyonu Cagiraraq Melumatlari Ekrana Yazdira Bilersiniz
     def MelumatiYazdir(self):
         print("%s'da Corona Virus Sebebiyle Xesde Olan Insan Sayi : %s :<<< %s "%(self.Secilenler[0], str(self.Secilenler[1]), self.OlkeyeGoreMesaj(self.Secilenler[0])))
         
@@ -99,14 +113,4 @@ class Melumat_Oxuyucu():
             return "#մնալ տանը <<< BUNU BILEREK ELEDIM ONSUZDA ELMENIDILER"            
         else:
             return ""
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+           
