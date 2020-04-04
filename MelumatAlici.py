@@ -1,8 +1,31 @@
 #Bu Kod Esasen Korona Virusu Melumat Alma Uycun Yazilib
 #Bu Koda Ilk Once https://www.worldometers.info/coronavirus/ Bu Saayta Baglanaraq Bu Sayitan 
-#Melumat Alir Ama Hal Hazirda Alinan Melumatlarda Probelm OLduqu Uycun Xeta Verecey.
+#Melumat Alir Ama Saytin adini daxil ederken www. ve diger https:// yazmaq lazim deyil
+#ve sonda .com Ehdiyac yoxdur.
+#Bu Bir sinifdir Birde Asaqida yazacaqim kodu Main Olaraq 
+#Isdiafde Ede Bilersiniz
+
+#Bu Koda Ilk Sizden melumat Saytini Ideyecey Ve Sonra Olkenin Adini Daxil Etmeyinizi 
+#Isdeyecey
+
+#import MelumatAlici
 #
-#
+#Stun  = MelumatAlici.MelumatSayitiDaxilEt()
+#    
+#while True:
+#        Oxunan_Olke = input("Olkeni Daxil Eidin :")
+#        if Oxunan_Olke == "Cix":
+#            print("Programnan Cixldi #EvdeQalin")
+#            break
+#        else:
+#            Baglanti = MelumatAlici.Melumat_Oxuyucu()
+#            Baglanti.OlkelerAl(Stun)
+#            Baglanti.Olke_Sayari
+#            Baglanti.XesdelerAl(Stun)
+#            Baglanti.SecilenOlke(Oxunan_Olke)
+#            Baglanti.SecilenXesdeSayi()
+#            Baglanti.Secilenler
+#            Baglanti.MelumatiYazdir()3
 
 
 import requests
@@ -94,7 +117,7 @@ class Melumat_Oxuyucu():
         if Olke == "USA":
             return "#Stay At Home"
         elif Olke == "China":
-            return "待在家裡 <<< Hamisi Bizim Isimizdi Yenede Evde Qalin ;)"
+            return "待在家裡"
         elif Olke == "Turkey":
             return "#Evde Kal"
         elif Olke == "Azerbaijan":
@@ -110,7 +133,7 @@ class Melumat_Oxuyucu():
         elif Olke == "France":
             return "#Restez a La Maison"   
         elif Olke == "Iran":
-            return "#մնալ տանը <<< BUNU BILEREK ELEDIM ONSUZDA ELMENIDILER"            
+            return ""            
         else:
             return ""
            
